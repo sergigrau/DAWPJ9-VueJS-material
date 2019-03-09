@@ -1,0 +1,27 @@
+<html lang="ca">
+
+<head>
+    <title>Material VUE:JS Jesuïtes Educació El Clot</title>
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div id="app">
+        Benvingut a 
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        let element = document.getElementById('app');
+        let app = new Vue({
+            el: element,
+            data: {
+                nom: 'Vue.js!'
+            },
+            template: '<div>{{ nom }}</div>'
+
+        });
+    </script>
+</body>
+
+</html>

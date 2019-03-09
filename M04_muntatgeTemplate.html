@@ -1,0 +1,30 @@
+<html lang="ca">
+
+<head>
+    <title>Material VUE:JS Jesuïtes Educació El Clot</title>
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <div id="app">
+        Benvingut a {{nom}}
+    </div>
+    <template id="plantilla">
+        <div>
+            Plantilla predefinida: {{ nom }}
+        </div>
+    </template>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                nom: 'Vue.js!'
+            },
+            template: '#plantilla'
+        });
+    </script>
+</body>
+
+</html>
