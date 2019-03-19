@@ -1,0 +1,38 @@
+<html lang="ca">
+
+<head>
+    <title>Material VUE:JS Jesuïtes Educació El Clot</title>
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <div id="app">
+    </div>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                si: true,
+                potser: true,
+                no:false
+            },
+            template: `
+    <div>
+      <template v-if="si">
+        <h1>Mostra</h1>
+      </template>
+      <template v-else-if="potser">
+        <h1>Poster mostra</h1>
+      </template>
+      <template v-if="no">
+        <h1>No mostra</h1>
+      </template>
+    </div>
+    `
+        });
+    </script>
+</body>
+
+</html>

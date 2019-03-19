@@ -1,0 +1,47 @@
+<html lang="ca">
+
+<head>
+  <title>Material VUE:JS Jesuïtes Educació El Clot</title>
+  <meta name="author" content="sergi.grau@fje.edu">
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <div id="app">
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        nomLlibrePerPlantilla: 'Vue.js',
+        nomLlibrePerMetode: 'Vue.js',
+        nomLlibrePerComputada: 'Vue.js',
+        curs: 'DAW2'
+      },
+      methods: {
+        obtenirTitolMetode: function () {
+          console.log('cridat: obtenirTitolMetode');
+          return `${this.nomLlibrePerMetode} a ${this.curs}`;
+        }
+      },
+      computed: {
+        obtenirTitolComputada: function () {
+          console.log('cridat: obtenirTitolComputada');
+          return `${this.nomLlibrePerComputada} a ${this.curs}`;
+        }
+      },
+      template: `
+    <div>
+        <h3>Template :</h3>
+        <h4>{{bookNameForTemplate}} a {{curs}}</h4>
+         <h3>Method :</h3>
+         <h4>{{obtenirTitolMetode()}}</h4>
+         <h3>Computed Property :</h3>
+         <h4>{{obtenirTitolComputada}}</h4>
+    `
+    });
+  </script>
+</body>
+
+</html>

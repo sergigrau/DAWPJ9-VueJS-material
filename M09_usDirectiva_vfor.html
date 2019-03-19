@@ -1,0 +1,78 @@
+<html lang="ca">
+
+<head>
+  <title>Material VUE:JS Jesuïtes Educació El Clot</title>
+  <meta name="author" content="sergi.grau@fje.edu">
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <div id="app">
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        llibres: [
+          {
+            titol: 'Angular a DAW2',
+            preu: 4.99,
+            id: 0,
+            area: ['TS', 'SPA']
+          },
+          {
+            titol: 'Spring',
+            preu: 5.99,
+            id: 1,
+            area: ['Java']
+          },
+          {
+            titol: 'Vue',
+            preu: 6.99,
+            id: 2,
+            area: ['JS', 'SPA']
+          },
+          {
+            titol: 'ExpressJS',
+            preu: 7.99,
+            id: 3,
+            area: ['NodeJS', 'Backend']
+          }
+        ]
+      },
+      template: `
+      <section>
+    <ul>
+      <li v-for="llibre in llibres" :key="llibre.id">
+        {{ llibre }}
+      </li>
+    </ul>
+
+    <ul>
+    <li v-for="llibre in llibres" :key="llibre.id">
+      <p><strong>Id:</strong> {{ llibre.id }}<p>
+      <p><strong>Títol:</strong> {{ llibre.title }}</p>
+      <p><strong>Arees:</strong> <span v-for="(area,index) in llibre.area">{{area}} 
+        <span v-if="index < llibre.area.length -1">, </span>
+      </span></p>
+    </li>
+  </ul>
+  </section>
+    `,
+      methods: {
+        filtrarAreaPerJS: function () {
+          this.llibres = this.llibres.filter(llibre => {
+            return (
+              llibre.area.findIndex(area => {
+                return area === 'JS';
+              }) >= 0
+            );
+          });
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

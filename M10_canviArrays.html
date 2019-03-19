@@ -1,0 +1,81 @@
+<html lang="ca">
+
+<head>
+  <title>Material VUE:JS Jesuïtes Educació El Clot</title>
+  <meta name="author" content="sergi.grau@fje.edu">
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <div id="app">
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        llibres: [
+          {
+            titol: 'Angular a DAW2',
+            preu: 4.99,
+            id: 0,
+            area: ['TS', 'SPA']
+          },
+          {
+            titol: 'Spring',
+            preu: 5.99,
+            id: 1,
+            area: ['Java']
+          },
+          {
+            titol: 'Vue',
+            preu: 6.99,
+            id: 2,
+            area: ['JS', 'SPA']
+          },
+          {
+            titol: 'ExpressJS',
+            preu: 7.99,
+            id: 3,
+            area: ['NodeJS', 'Backend']
+          }
+        ]
+      },
+      template: `
+      <ul>
+      <li v-for="llibre in llibres" :key="llibre.id">
+        {{ llibre }}
+      </li>
+    </ul>
+    `,
+      methods: {
+        set: function () {
+          let indexAReemplaçar = 0;
+          let nouLlibre = {
+            titol: 'Posa la consola per a cridar a Set',
+            preu: 4.99,
+            id: 0,
+            area: ['JS', 'Front-end']
+          };
+          Vue.set(this.llibres, indexAReemplaçar, nouLlibre);
+        },
+        splice: function () {
+          let indexAReemplaçar = 0;
+          let nouLlibre = {
+            titol: 'Posa la consola per a cridar a Splice',
+            preu: 18.99,
+            id: 0,
+            area: ['JS', 'Front-end']
+          };
+          this.llibres.splice(indexAReemplaçar, 1, nouLlibre);
+        },
+        redimensionar: function (index) {
+          // utilitza splice per redimensionar un array, doncs VUE ho pot detectar
+          this.llibres.splice(index, 1);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

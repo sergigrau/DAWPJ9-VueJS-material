@@ -1,0 +1,40 @@
+<html lang="ca">
+
+<head>
+  <title>Material VUE:JS Jesuïtes Educació El Clot</title>
+  <meta name="author" content="sergi.grau@fje.edu">
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <div id="app">
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        llibre: 
+          {
+            titol: 'Angular a DAW2',
+            preu: 4.99,
+            id: 0,
+            area: ['TS', 'SPA'],
+            action: function() {
+        return 'es una acció';
+      }
+          }
+      },
+      template: `
+      <ul>
+        <li v-for="(prop, key, index) in llibre">
+          {{index}} -- {{key}}: {{prop}}
+          <p v-if="typeof prop == 'function'">{{prop()}}</p>
+        </li>
+      </ul>
+    `
+    });
+  </script>
+</body>
+
+</html>
