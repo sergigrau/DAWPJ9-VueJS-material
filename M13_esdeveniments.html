@@ -16,6 +16,15 @@
       data: {
         mostra: true
       },
+      methods: {
+    mostrar: function(nouValor, event) {
+      if (event) {
+        console.log(event.type);
+      }
+      this.mostra = nouValor
+;
+    }
+      },
       template: `
     <div>
         <h1 v-on:click="mostra = !mostra">
@@ -24,6 +33,16 @@
         <p v-show="mostra">
            Ocular i mostrar missatge
         </p>
+
+        <h1 v-on:click="mostrar(true, $event)">
+        Mostra
+    </h1>
+    <h1 v-on:click="mostrar(false, $event)">
+        Oculta
+    </h1>
+
+    </h1>
+
     </div>
     `
     });

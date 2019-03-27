@@ -1,0 +1,49 @@
+<html lang="ca">
+
+<head>
+  <title>Material VUE:JS Jesuïtes Educació El Clot</title>
+  <meta name="author" content="sergi.grau@fje.edu">
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <div id="app">
+  </div>
+  <script>
+
+    let app = new Vue({
+      el: '#app',
+      data: {
+        midaFont: 12,
+        fontSize: 0,
+        fontSizeObject: { fontSize: '0px' },
+        fontColorObject: { color: 'red' }
+
+      },
+      watch: {
+        fontSize: function () {
+          this.fontSizeObject.fontSize = this.fontSize + 'px';
+
+        }
+      },
+      template: `
+      <div>
+      <h4>Font dinàmica</h4>
+<input type="number" v-model.number="midaFont" />
+<p v-bind:style="{fontSize: midaFont + 'px'}">
+   VUE.JS
+</p>
+<input type="number" v-model.number="fontSize" />
+    <p v-bind:style="[fontSizeObject, fontColorObject]">
+        Getting to Know Vue.js
+    </p>
+
+    </div>
+      `
+    });
+  </script>
+</body>
+
+</html>

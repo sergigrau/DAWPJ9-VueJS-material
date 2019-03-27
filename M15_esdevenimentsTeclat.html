@@ -1,0 +1,55 @@
+<html lang="ca">
+<!--
+    Utilitza AXIOS client HTTP per al navegador i NodeJS
+    npm install axios
+-->
+<head>
+  <title>Material VUE:JS Jesuïtes Educació El Clot</title>
+  <meta name="author" content="sergi.grau@fje.edu">
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <div id="app">
+  </div>
+  <script>
+   let app = new Vue({
+  el: '#app',
+  data: {
+    cadenaCerca: '',
+    resultats: []
+  },
+  methods: {
+    cercar: function() {
+      axios
+        .get(`https://swapi.co/api/starships/?search=${this.cadenaCerca}`)
+        .then(response => {
+          this.resultats = response.data;
+        });
+    }
+  },
+  template: `
+      <div>
+      <label>Cerca:
+        <input
+            type="text"
+            v-model="cadenaCerca
+    "
+            v-on:keyup.enter.esc="cercar" />
+      </label>
+      <h5>resultats: <small>{{resultats.count}}</small></h5>
+      <ul>
+        <li v-for="resultat in resultats.resultats">
+          {{resultat.name}}
+        </li>
+      </ul>
+      </div>
+      `
+});
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<html lang="ca">
+
+<head>
+  <title>Material VUE:JS Jesuïtes Educació El Clot</title>
+  <meta name="author" content="sergi.grau@fje.edu">
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <div id="app">
+  </div>
+  <script>
+   let app = new Vue({
+  el: '#app',
+  data: {
+    missatges: []
+  },
+  template: `
+    <div>
+        <div v-on:click="missatges.push('A')">
+            <h4>A</h4>
+            <div v-on:click="missatges.push('X')">
+                <h4>X</h4>
+                <div v-on:click.stop="missatges.push('X prop')">
+                    <h4>X prop</h4>
+                </div>
+                <div v-on:click="missatges.push('B')">
+                    <h4>B</h4>
+                </div>
+            </div>
+        </div>
+        <p>
+            Last clicked:
+            <ol>
+                <li v-for="missatge in missatges">
+                    {{missatge}}
+                </li>
+            </ol>
+            </p>
+        <input type="button" v-on:click="missatges = []" value="Neteja" />
+    </div>
+    `
+});
+  </script>
+</body>
+
+</html>
