@@ -1,0 +1,59 @@
+<html lang="ca">
+
+<head>
+  <title>Material VUE:JS Jesuïtes Educació El Clot</title>
+  <meta name="author" content="sergi.grau@fje.edu">
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <div id="app1">
+  </div>
+  <div id="app2">
+  </div>
+  <script>
+
+    let dadesCompartides = {
+      valor: 1
+    };
+    let app1 = new Vue({
+      el: '#app1',
+      data: {
+        compartides: dadesCompartides
+        ,
+        private: {}
+      },
+      template: `
+    <h1>App 1 dades compartides: {{compartides.valor}}</h1>
+  `
+    });
+    let app2 = new Vue({
+      el: '#app2',
+      data: {
+        compartides: dadesCompartides
+        ,
+        private: {}
+      },
+      methods: {
+        augmentar: function () {
+          this.$data.compartides.valor++;
+        },
+        disminuir: function () {
+          dadesCompartides
+            .valor--;
+        }
+      },
+      template: `
+    <div>
+      <h1>App 2 dades compartides: {{compartides.valor}}</h1>
+      <button v-on:click="augmentar">+</button>
+      <button v-on:click="disminuir">-</button>
+    </div>
+  `
+    });
+  </script>
+</body>
+
+</html>

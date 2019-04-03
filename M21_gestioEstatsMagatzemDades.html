@@ -1,0 +1,84 @@
+<html lang="ca">
+
+<head>
+  <title>Material VUE:JS Jesuïtes Educació El Clot</title>
+  <meta name="author" content="sergi.grau@fje.edu">
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuex"></script>
+
+  
+  <div id="app1">
+  </div>
+  <div id="app2">
+  </div>
+  <script>
+
+var dadesCompartides = {
+  modeDesenvolupador: true,
+  estat: {
+    valor: 1
+  },
+  augmentar() {
+    if (this.modeDesenvolupador) {
+      console.log('augmentar() ');
+    }
+    this.estat.valor++;
+  },
+  disminuir() {
+    if (this.modeDesenvolupador) {
+      console.log('disminuir() ');
+    }
+    this.estat.valor--;
+  },
+  setValor(nouValor) {
+    if (this.modeDesenvolupador) {
+      console.log('setValor() amb nou valor: ', nouValor);
+    }
+    this.estat.valor = nouValor;
+  }
+};
+
+var app1 = new Vue({
+  el: '#app1',
+  data: {
+    compartides: dadesCompartides.estat,
+    private: {}
+  },
+  template: `
+    <h1>App 1 valor compartit: {{compartides.valor}}</h1>
+  `
+});
+var app2 = new Vue({
+  el: '#app2',
+  data: {
+    compartides: dadesCompartides.estat,
+    private: {}
+  },
+  methods: {
+    augmentar: function() {
+      dadesCompartides.augmentar();
+    },
+    disminuir: function() {
+      dadesCompartides.disminuir();
+    },
+    reset: function() {
+      dadesCompartides.setValor(1);
+    }
+  },
+  template: `
+    <div>
+      <h1>App 2 valor compartit: {{compartides.valor}}</h1>
+      <button v-on:click='augmentar'>+</button>
+      <button v-on:click='disminuir'>-</button>
+      <button v-on:click='reset'>reset</button>
+    </div>
+  `
+});
+  </script>
+</body>
+
+</html>
