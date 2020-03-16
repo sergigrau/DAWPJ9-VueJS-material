@@ -14,9 +14,18 @@
     let app = new Vue({
       el: '#app',
       data: {
+        temps:0,
         mostra: true
       },
       methods: {
+
+        incrementar: function () {
+                  let _this=this;
+                    setInterval(function() {
+                        _this.temps++;
+                    }, 1000);
+                }
+            ,
     mostrar: function(nouValor, event) {
       if (event) {
         console.log(event.type);
@@ -27,6 +36,10 @@
       },
       template: `
     <div>
+      <button id="btn3" v-on:click="incrementar">tiempo</button>
+                            
+                            <h2>{{temps}}</h2>
+
         <h1 v-on:click="mostra = !mostra">
             Canvia
         </h1>
