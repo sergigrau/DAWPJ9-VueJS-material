@@ -25,7 +25,7 @@
   methods: {
     cercar: function() {
       axios
-        .get(`https://swapi.co/api/starships/?search=${this.cadenaCerca}`)
+        .get(`https://swapi.dev/api/starships/?search=${this.cadenaCerca}`)
         .then(response => {
           this.resultats = response.data;
         });

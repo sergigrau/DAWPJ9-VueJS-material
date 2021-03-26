@@ -38,7 +38,7 @@ var store = new Vuex.Store({
   actions: {
     search: function(context, payload) {
       axios
-        .get(`https://swapi.co/api/starships/?search=${payload.searchText}`)
+        .get(`https://swapi.dev/api/starships/?search=${payload.searchText}`)
         .then(response => {
           context.commit('setShips', { newShips: response.data });
         });
