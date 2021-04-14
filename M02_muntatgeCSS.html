@@ -1,4 +1,9 @@
 <html lang="ca">
+<!--
+    Materials de VUE.JS 
+    @author. sergi.grau@fje.edu
+    @version 2.0 09.04.21
+-->
 
 <head>
     <title>Material VUE:JS Jesuïtes Educació El Clot</title>
@@ -8,17 +13,19 @@
 
 <body>
     <div id="app">
-        Benvingut a {{nom}}
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        nom: {{ nom }}
+      </div>
+    <script src="https://unpkg.com/vue@next"></script>
     <script>
         let element = document.getElementById('app');
-        let app = new Vue({
-            el: element,
-            data: {
-                nom: 'Vue.js!'
+        const Text = {
+            data() {
+                return {
+                    nom: 'VUE.JS'
+                }
             }
-        });
+        }
+        Vue.createApp(Text).mount(element);
     </script>
 </body>
 

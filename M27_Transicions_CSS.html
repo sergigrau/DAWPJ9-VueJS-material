@@ -1,0 +1,53 @@
+<html lang="ca">
+
+<head>
+    <title>Material VUE:JS Jesuïtes Educació El Clot</title>
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta charset="UTF-8">
+    <style>
+       /* Les animacions de entrada i sortida poden usar */
+/* funcions d'espera i durada diferets.      */
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+{
+  transform: translateX(10px);
+  opacity: 0;
+}
+    </style>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <div id="demo">
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#demo',
+            data: {
+                show: true
+            }
+            ,
+            template: `
+        <div id="demo">
+        <button v-on:click="show = !show">
+            Mostrar/Ocultar
+        </button>
+        <transition name="slide-fade">
+            <p v-if="show">hola</p>
+        </transition>
+    </div>      
+        `
+
+        });
+    </script>
+
+</body>
+
+</html>

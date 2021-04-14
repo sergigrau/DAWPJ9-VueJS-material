@@ -1,0 +1,53 @@
+<html lang="ca">
+
+<head>
+    <title>Material VUE:JS Jesuïtes Educació El Clot</title>
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta charset="UTF-8">
+    <style>
+        .bounce-enter-active {
+            animation: bounce-in .5s;
+        }
+
+        .bounce-leave-active {
+            animation: bounce-in .5s reverse;
+        }
+
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1.5);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <div id="exemple-2">
+        <button @click="show = !show">Mostrar/Ocultar</button>
+        <transition name="bounce">
+            <p v-if="show">DAW2!</p>
+        </transition>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#exemple-2',
+            data: {
+                show: true
+            }
+        });
+    </script>
+
+</body>
+
+</html>
