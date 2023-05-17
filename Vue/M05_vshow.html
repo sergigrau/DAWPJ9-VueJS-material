@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>
+            1: <span v-show="si">si</span>
+        </h1>
+        <h1>
+            2: <span v-show="no">No</span>
+        </h1>
+        <h1>
+            3: <span v-show="mostra == 'si'">si!</span>
+        </h1>
+        <h1>
+            4: <span v-show="noMostra == 'si'">No :(</span>
+        </h1>
+        <h1>
+            5: <span v-show="mostra == siMot">si!</span>
+        </h1>
+        <h1>
+            6: <span v-show="0 == 1 - 1">si!</span>
+        </h1>
+        <h1>
+            7: <span v-show="0 == 1 + 1">No :(</span>
+        </h1>
+    </div>
+    
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        const app = createApp({
+            data() {
+                return {
+                si: true,
+                no: false,
+                potser: 0,
+                mostra: 'si',
+                noMostra: 'no',
+                siMot: 'si'
+                }
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

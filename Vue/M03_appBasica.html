@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="comptador++">{{ comptador }}</button>
+    </div>
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        const app = createApp({
+            data() {
+                return {
+                    comptador: 0
+                }
+            }
+            ,
+            mounted() {
+                console.log(this.comptador) // => 1
+                this.comptador = 2
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

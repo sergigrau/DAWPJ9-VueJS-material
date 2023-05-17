@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <section>
+      <ul>
+        <li v-for="llibre in llibres" :key="llibre.id">
+          {{ llibre }}
+        </li>
+      </ul>
+  
+      <ul>
+      <li v-for="llibre in llibres" :key="llibre.id">
+        <p><strong>Id:</strong> {{ llibre.id }}<p>
+        <p><strong>Títol:</strong> {{ llibre.title }}</p>
+        <p><strong>Arees:</strong> <span v-for="(area,index) in llibre.area">{{area}} 
+          <span v-if="index < llibre.area.length -1">, </span>
+        </span></p>
+      </li>
+    </ul>
+    </section>
+  </div>
+
+  <script type="module">
+    import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+    const app = createApp({
+      data() {
+        return {
+          llibres: [
+            {
+              titol: 'Angular a DAW2',
+              preu: 4.99,
+              id: 0,
+              area: ['TS', 'SPA']
+            },
+            {
+              titol: 'Spring',
+              preu: 5.99,
+              id: 1,
+              area: ['Java']
+            },
+            {
+              titol: 'Vue',
+              preu: 6.99,
+              id: 2,
+              area: ['JS', 'SPA']
+            },
+            {
+              titol: 'ExpressJS',
+              preu: 7.99,
+              id: 3,
+              area: ['NodeJS', 'Backend']
+            }
+          ]
+        }
+      },
+      methods: {
+        filtrarAreaPerJS: function () {
+          this.llibres = this.llibres.filter(llibre => {
+            return (
+              llibre.area.findIndex(area => {
+                return area === 'JS';
+              }) >= 0
+            );
+          });
+        }
+      },
+    });
+
+    app.mount('#app');
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <script type="module">
+            //author sergi grau  sergi.grau@fje.edu
+            import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+            const app = createApp({
+                data() {
+                    return {
+                        midaFont: 12,
+                        fontSize: 0,
+                        fontSizeObject: { fontSize: '0px' },
+                        fontColorObject: { color: 'red' }
+                    }
+                },
+                watch: {
+                    fontSize: function () {
+                        this.fontSizeObject.fontSize = this.fontSize + 'px';
+
+                    }
+                },
+                template: `
+      <div>
+      <h4>Font dinàmica</h4>
+<input type="number" v-model.number="midaFont" />
+<p v-bind:style="{fontSize: midaFont + 'px'}">
+   VUE.JS
+</p>
+<input type="number" v-model.number="fontSize" />
+    <p v-bind:style="[fontSizeObject, fontColorObject]">
+        Getting to Know Vue.js
+    </p>
+
+    </div>
+      `
+            });
+
+
+            app.mount('#app');
+        </script>
+</body>
+
+</html>

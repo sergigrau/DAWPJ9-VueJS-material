@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <script type="module">
+            //author sergi grau  sergi.grau@fje.edu
+            import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+            const app = createApp({
+                data() {
+                    return {
+                        inputs: {
+                            text: 'inicial',
+                            textarea: '',
+                            select: '',
+                            checkbox: true,
+                            checkboxes: [],
+                            radiosDynamicOptions: [
+                                {
+                                    label: 'DAW',
+                                    value: 'daw'
+                                },
+                                {
+                                    label: 'Altres',
+                                    value: 'altres'
+                                }
+                            ]
+                        }
+                    }
+                },
+                template: `
+  <section>
+  <h4>Text</h4>
+<input type="text" v-model="inputs.text" />
+<p>
+    <strong>Text:</strong> {{inputs.text}}
+</p>
+
+<h4>Number as String</h4>
+<input type="number" v-model="inputs.numberAsString" />
+<p>
+    <strong>Number:</strong> {{inputs.numberAsString}}
+</p>
+<p>
+    <strong>Typeof numberAsString:</strong> {{typeof inputs.numberAsString}}
+</p>
+<h4>Number as Number</h4>
+<input type="number" v-model.number="inputs.numberAsNumber" />
+<p>
+    <strong>Number:</strong> {{inputs.numberAsNumber}}
+</p>
+<p>
+    <strong>Typeof numberAsNumber:</strong> {{typeof inputs.numberAsNumber}}
+</p>
+
+<h4>Date</h4>
+<input type="date" v-model="inputs.data" />
+<p>
+    <strong>Date:</strong> {{inputs.data}}
+</p>
+<h4>Password</h4>
+<input type="password" v-model="inputs.password" />
+<p>
+    <strong>Password:</strong> {{inputs.password}}
+</p>
+<h4>Checkbox</h4>
+<input type="checkbox" v-model="inputs.checkbox" value="myCheckBox" id="myCheckBox" />
+<label for="myCheckBox">M'agrada VUE</label>
+<p>
+    <strong>Checkbox:</strong> {{inputs.checkbox}}
+</p>
+<h4>Checkboxes</h4>
+<input v-model="inputs.checkboxes" type="checkbox" value="daw" id="daw" />
+<label for="daw">daw</label>
+<input v-model="inputs.checkboxes" type="checkbox" value="dam" id="dam" />
+<label for="dam">dam</label>
+<input v-model="inputs.checkboxes" type="checkbox" value="asix" id="asix" />
+<label for="asix">asix</label>
+
+<p>
+    <strong>Checkboxes:</strong> {{inputs.checkboxes}}
+</p>
+  
+<h4>Radios</h4>
+<input v-model="inputs.radios" type="radio" value="daw" id="daw" />
+<label for="daw">daw</label>
+<br>
+<input v-model="inputs.radios" type="radio" value="dam" id="dam" />
+<label for="dam">dam</label>
+<br>
+<input v-model="inputs.radios" type="radio" value="asix" id="asix" />
+<label for="asix">asix</label>
+<p>
+    <strong>Radios:</strong> {{inputs.radios}}
+</p>
+
+<h4>Radios dinàmics</h4>
+<template v-for="(option, index) in inputs.radiosDynamicOptions">
+    <input v-model="inputs.radiosDynamic" type="radio" v-bind:value="option.value" v-bind:id="option.value" />
+    <label v-bind:for="option.value">{{option.label}}</label>
+    <br v-if="index < inputs.radiosDynamicOptions.length">
+</template>
+<p>
+    <strong>Radios:</strong> {{inputs.radiosDynamic}}
+</p>
+<h4>Text</h4>
+<textarea v-model="inputs.textarea" cols="50" style="height: 200px;"></textarea>
+<p style="white-space: pre-line;">
+    {{inputs.textarea}}
+</p>
+<h4>Select</h4>
+<select v-model="inputs.select">
+    <option disabled value="">selecciona cicle
+ </option>
+    <option value="daw">daw</option>
+    <option value="dam">dam</option>
+    <option value="asix">asix</option>
+    
+</select>
+<p>
+    <strong>Selected:</strong> {{inputs.select}}
+</p>
+</section>
+      `
+            });
+
+
+            app.mount('#app');
+        </script>
+</body>
+
+</html>
